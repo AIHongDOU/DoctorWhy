@@ -1,5 +1,14 @@
 # med-req-prober
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude%20Skill-ready-4A90D9?style=flat-square" alt="Claude Skill"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
+  <img src="https://img.shields.io/badge/Works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-2f81f7?style=flat-square" alt="Supported tools"/>
+  <img src="https://img.shields.io/badge/Language-%E4%B8%AD%E6%96%87%20%2F%20English-blue?style=flat-square" alt="Language"/>
+  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square" alt="GitHub stars"/>
+  <img src="https://img.shields.io/github/forks/AIHongDOU/med-req-prober?style=flat-square" alt="GitHub forks"/>
+</p>
+
 说不清医疗软件需求时,让 AI 一步一步问清楚,然后直接产出可运行的代码。
 
 面向想开发医疗软件、却讲不清需求的开发者。它把"我说不清"变成"我能答"——用一轮接一轮的小问题,把模糊想法翻译成可执行方案,再落成代码。
