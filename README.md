@@ -123,7 +123,8 @@ med-req-prober/
 ├── README.md
 ├── docs/images/          logo、演示图
 ├── references/
-│   └── question-bank.csv 实弹问题示例(可选)
+│   ├── rules-device-ui.md 暗规则库·器械 UI 规范(核心资产)
+│   └── question-bank.csv  实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
     └── stitch_demo.py     逻辑输出示例(python 自检)
