@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC-01 细胞医学图像分析仪 - 登录</title>
+<style>
+  :root {
+    --bg-main: #1B2433;   /* 主背景:深蓝灰 */
+    --bg-card: #243447;   /* 卡片:比背景浅一档 */
+    --primary: #1B6EC2;   /* 医疗蓝 */
+    --text-main: #FFFFFF;
+    --text-sub: #9DB2C6;
+    --danger: #D64545;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: var(--bg-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: var(--text-main);
+  }
+  .brand {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .brand h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .brand .model {
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--text-sub);
+    letter-spacing: 1px;
+  }
+  .login-card {
+    background: var(--bg-card);
+    width: 380px;
+    padding: 36px 32px 28px;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  }
+  .login-card label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+  }
+  .login-card input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    margin-bottom: 18px;
+    background: var(--bg-main);
+    border: 1px solid rgba(157,178,198,0.4);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-size: 18px;
+    outline: none;
+  }
+  .login-card input:focus {
+    border-color: var(--primary);
+  }
+  .btn-primary {
+    width: 100%;
+    height: 44px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: #1f7fd8; }
+  .btn-secondary {
+    width: 100%;
+    height: 44px;
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover { background: rgba(27,110,194,0.15); }
+  .error {
+    color: var(--danger);
+    font-size: 14px;
+    height: 18px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .footer {
+    margin-top: 32px;
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+</style>
+</head>
+<body>
+  <div class="brand">
+    <h1>细胞医学图像分析仪</h1>
+    <div class="model">MC-01 · 4通量版</div>
+  </div>
+
+  <div class="login-card">
+    <div class="error" id="error"></div>
+    <label for="account">账号</label>
+    <input type="text" id="account" autocomplete="username" placeholder="请输入账号">
+    <label for="password">密码</label>
+    <input type="password" id="password" autocomplete="current-password" placeholder="请输入密码">
+    <button class="btn-primary" id="loginBtn">登 录</button>
+    <button class="btn-secondary" id="cardBtn">扫码 / 刷卡登录</button>
+  </div>
+
+  <div class="footer">
+    <span>版本 v2.0.1</span>
+    <span>仅供授权人员使用</span>
+  </div>
+
+  <script>
+    const account = document.getElementById('account');
+    const password = document.getElementById('password');
+    const error = document.getElementById('error');
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      if (!account.value.trim() || !password.value.trim()) {
+        error.textContent = '请输入账号和密码';
+        return;
+      }
+      error.textContent = '';
+      // 设备开机登录 → 进入主界面(此处为演示跳转)
+      window.location.href = '主界面.html';
+    });
+    document.getElementById('cardBtn').addEventListener('click', () => {
+      error.textContent = '请将工牌靠近感应区…';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+  </script>
+</body>
+</html>
