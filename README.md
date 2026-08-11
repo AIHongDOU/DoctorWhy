@@ -2,11 +2,9 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Claude%20Skill-ready-4A90D9?style=flat-square" alt="Claude Skill"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
   <img src="https://img.shields.io/badge/Works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-2f81f7?style=flat-square" alt="Supported tools"/>
-  <img src="https://img.shields.io/badge/Language-%E4%B8%AD%E6%96%87%20%2F%20English-blue?style=flat-square" alt="Language"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
   <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square" alt="GitHub stars"/>
-  <img src="https://img.shields.io/github/forks/AIHongDOU/med-req-prober?style=flat-square" alt="GitHub forks"/>
 </p>
 
 说不清医疗软件需求时,让 AI 一步一步问清楚,然后直接产出可运行的代码。
@@ -33,20 +31,9 @@
 
 一个模糊需求进来,它用追问把它变清晰:
 
-```mermaid
-flowchart TD
-    A[模糊的医疗需求] --> B[追问引擎]
-    B --> B1[复述理解,确认对齐]
-    B1 --> B2[按框架维度推进]
-    B2 --> B3[点破隐含矛盾]
-    B3 --> B4[补全领域现实]
-    B4 --> B5{能画出完整数据流?}
-    B5 -- 否 --> B
-    B5 -- 是 --> C[输出]
-    C --> C1[数据流图]
-    C --> C2[已定决策 + 待确认清单]
-    C --> C3[可运行代码]
-```
+<p align="center">
+  <img src="docs/images/workflow.svg" alt="工作流动画" width="90%"/>
+</p>
 
 追问的样子:
 
