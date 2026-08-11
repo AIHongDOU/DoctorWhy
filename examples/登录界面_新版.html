@@ -142,8 +142,10 @@
         return;
       }
       error.textContent = '';
-      // 设备开机登录 → 进入主界面(此处为演示跳转)
-      window.location.href = '主界面.html';
+      // 演示骨架:真实系统此处应校验凭证并进入主界面。
+      // 本文件仅为 UI 示意,不包含后端校验,故停留本页并提示。
+      error.textContent = '登录成功(示意)——演示骨架,不含真实校验';
+      error.style.color = '#3fb950';
     });
     document.getElementById('cardBtn').addEventListener('click', () => {
       error.textContent = '请将工牌靠近感应区…';

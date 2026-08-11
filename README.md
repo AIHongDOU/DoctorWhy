@@ -123,7 +123,6 @@ med-req-prober/
 ├── README.md
 ├── docs/images/          logo、演示图
 ├── references/
-│   ├── frameworks.md     提问框架展开版
 │   └── question-bank.csv 实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
