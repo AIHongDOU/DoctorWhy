@@ -1,100 +1,107 @@
 <p align="center">
-  <img src="docs/images/logo.png" width="300" alt="mascot"/>
+  <img src="docs/images/logo.png" width="280" alt="med-req-prober mascot"/>
 </p>
 
-<h1 align="center" style="margin-top:0;letter-spacing:2px">med-req-prober</h1>
+<h1 align="center">med-req-prober</h1>
 
 <p align="center">
-  <em>说不清的医疗需求,它替你一点一点问清楚,然后直接写代码。</em>
+  <em>You can't quite explain your medical software requirement. It keeps asking until you both get it — then it writes the code.</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Claude%20Skill-ready-2f81f7?style=flat-square" alt="Claude Skill">
-  <img src="https://img.shields.io/badge/Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-2f81f7?style=flat-square" alt="Works with">
-  <img src="https://img.shields.io/badge/MIT%20License-3fb950?style=flat-square" alt="MIT license">
-  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square&color=2f81f7" alt="Stars">
+  <img src="https://img.shields.io/badge/Claude%20Skill-ready-111111?style=flat-square" alt="Claude Skill">
+  <img src="https://img.shields.io/badge/Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-111111?style=flat-square" alt="Works with">
+  <img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license">
+  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square" alt="Stars">
 </p>
 
 ---
 
-还在为"怎么跟 AI 讲医疗需求"发愁?你不是一个人。
+Struggling to explain your medical software idea to an AI? You're not alone.
 
-你会说"我要在 100X 扫描的时候分类细胞",但说不清要**边拍边分**还是**拍完再分**、分类到什么粒度、结果给谁看。你说了一大段,AI 点头,然后写出一堆你不知道对不对的东西。
+You say *"I want to classify cells during 100X scanning"* — but not whether it should run **while capturing** or **afterwards**, how granular the classes are, or who consumes the result. You type a long paragraph, the AI nods, and writes something you can't verify.
 
-med-req-prober 换个方式:它**不急着写**,它问你。
+med-req-prober does the opposite. It doesn't rush to write. **It asks first.**
 
-## 它怎么干活
+## How it works
 
-你的需求越模糊,它越来劲:
-
-```
-开发者:我想在100X扫描的时候,可以分类细胞类别。
-
-→ 分类是"边拍边分"还是"拍完再分"?
-→ 你要分到什么程度?(粗分类 / 40分类骨髓学)
-→ 结果给谁看?(出报告 / 辅助技师)
-→ 扫描时分类拖慢0.5秒一张,能接受吗?
-
-开发者:边拍边分,40分类,出报告医生看,不能拖慢。
-
-→ 输出:数据流图 + 接口骨架 + 缓存/坐标方案
-```
+The fuzzier your requirement, the more it digs:
 
 ```
-开发者:登录界面太普通不美观。
+Developer: I want to classify cell types during 100X scanning.
 
-→ 这个登录界面是谁在用?
-→ "太普通"具体是哪不满意?
-→ 要显示产品名/型号/版本号吗?
-→ 将来要支持工牌扫码/刷卡吗?
+→ Classify while capturing, or after the scan finishes?
+→ How granular? (rough classes / 40-class bone-marrow differential)
+→ Who reads the result? (automated report / technician review)
+→ Classification slows each frame by 0.5s — acceptable?
 
-开发者:值班技师用,重新设计一版,要产品号,预留扫码。
+Developer: While capturing. 40 classes. Doctor-reviewed report. Must not block.
 
-→ 输出:一版能直接跑的医疗质感登录界面(HTML)
+→ Output: data-flow diagram + interface skeleton + cache/coordinate design
 ```
 
-它问到你没想清楚的部分全想清楚,然后才动手。更多实弹产物在 [examples/](examples/)。
+```
+Developer: The login screen looks plain and dated.
 
-## 为什么不能直接丢给通用 AI
+→ Who uses it? (lab technician / instrument operator)
+→ What exactly looks off?
+→ Show product name / model / version?
+→ Plan for ID-card / QR login later?
 
-描述医疗需求时,开发者往往说出的是**手段**,不是**目的**:
+Developer: Technicians, want a redesign, show the model, reserve card login.
 
-> "我要在 20x 扫描时加模型识别,存细胞坐标转真实物理坐标到缓存库,选区时一瞬间知道区域细胞构成。"
+→ Output: a runnable medical-grade login screen (HTML)
+```
 
-这句话里藏着真正的目标:"选区时一瞬间知道区域构成"。但通用 AI 缺医疗/硬件领域知识,补不上"坐标怎么换算""缓存和正式库什么关系""识别要跑在哪"这些隐含约束。它替你把这些缺口一个个问出来。
+More live examples in [examples/](examples/).
+
+## The probing loop
+
+A vague requirement in, a clear spec out — one question at a time:
 
 <p align="center">
-  <img src="docs/images/story-1-confused.png" width="30%" alt="说不清"/>
-  <img src="docs/images/story-2-probing.png" width="30%" alt="被追问"/>
-  <img src="docs/images/story-3-clear.png" width="30%" alt="变清晰"/>
+  <img src="docs/images/workflow-anim.png" alt="Probing loop" width="88%"/>
 </p>
 
-## 追问的过程(动图)
+Under the hood, the loop is a clean pipeline:
 
-一个模糊需求进来,它用追问把它问清楚:
+```mermaid
+flowchart LR
+    A[Vague requirement] --> B[Restate & confirm]
+    B --> C[Walk framework dims]
+    C --> D[Surface hidden conflicts]
+    D --> E[Fill in domain constraints]
+    E --> F{Can we draw the full flow?}
+    F -- no --> B
+    F -- yes --> G[Output: diagram + runnable code]
+```
 
-<p align="center">
-  <img src="docs/images/workflow-anim.png" alt="工作方式" width="90%"/>
-</p>
+## Why not just hand it to a generic AI
 
-## 规则与框架,而非问题库
+Developers state **how**, not **why**:
 
-- **追问规则**:小问题、具体到界面/操作、一次一个、医学术语用大白话、按优先级、拆目标、收敛就停。
-- **提问框架**:通用(目标→用户→主流程→数据→边界→交付),叠加扫描/影像、UI/登录两个品类。
-- **推进机制**:复述对齐 → 按维度走 → 抓矛盾 → 注入现实 → 收敛。
+> "Add model inference during 20x scanning, store cell coordinates converted to physical coordinates in a cache, so I instantly know the cell composition of an area when I select it."
 
-框架决定"往哪问",机制决定"怎么问"。它不靠堆问题碰运气,而是接住任何需求。
+The real goal buried in there: *"instantly know area composition when selecting."* A generic AI lacks the medical/hardware knowledge to infer the missing constraints — how coordinates map, how cache relates to the main store, where inference runs. med-req-prober surfaces those gaps one question at a time.
 
-## 如何使用
+## Rules and frameworks, not a question bank
 
-以 AI 编程助手在对话里读取本仓库的 `SKILL.md` 为前提。
+- **Asking rules**: small questions, concrete to screen/operation, one decision at a time, plain language for medical jargon, priority-ordered, goal extraction, stop when converged.
+- **Probing frameworks**: a generic one (goal → user → main flow → data → edge cases → delivery), plus scanning/imaging and UI/login variants.
+- **Driving loop**: restate → walk the framework → surface conflicts → inject domain reality → converge.
+
+The framework says *where to ask*; the loop says *how to ask*. No reliance on a canned question bank — it handles any requirement.
+
+## Install
+
+Point your AI coding assistant at `SKILL.md` in this repo.
 
 ### Claude Code
 
 ```bash
 git clone git@github.com:AIHongDOU/med-req-prober.git
 cd med-req-prober
-claude   # 说:读 SKILL.md,按它的规则追问我的需求
+claude   # then: read SKILL.md and probe my requirement per its rules
 ```
 
 ### Codex (OpenAI)
@@ -102,7 +109,7 @@ claude   # 说:读 SKILL.md,按它的规则追问我的需求
 ```bash
 git clone git@github.com:AIHongDOU/med-req-prober.git
 cd med-req-prober
-codex   # 说:把 SKILL.md 当成系统提示,然后按它的流程问我
+codex   # then: treat SKILL.md as a system prompt and probe per its flow
 ```
 
 ### Trae / Cursor
@@ -111,45 +118,45 @@ codex   # 说:把 SKILL.md 当成系统提示,然后按它的流程问我
 git clone git@github.com:AIHongDOU/med-req-prober.git
 ```
 
-- **Trae**:对话里粘贴 `SKILL.md` 全文,或说"按 /med-req-prober 的方式追问我的需求"。
-- **Cursor**:把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,说"用 med-req-prober 帮我问清楚这个需求"。
+- **Trae**: paste `SKILL.md` into the chat, or say "probe my requirement the med-req-prober way".
+- **Cursor**: drop `SKILL.md` into `.cursor/rules/` or paste it in, then say "use med-req-prober to clarify this requirement".
 
-> 原则不变:无论哪个工具,**把 `SKILL.md` 交给 AI**,它就能按这套规则追问你的医疗需求。`references/` 和 `examples/` 是配套素材。
+> The rule is the same everywhere: **give the AI `SKILL.md`** and it will probe your medical requirement. `references/` and `examples/` are supporting material.
 
-## 仓库结构
+## Repository layout
 
 ```
 med-req-prober/
-├── SKILL.md              规则、框架、推进机制、输出协议
+├── SKILL.md              rules, frameworks, driving loop, output contract
 ├── README.md
-├── docs/images/          logo、演示图
+├── docs/images/          logo, demo images
 ├── references/
-│   ├── frameworks.md     提问框架展开版
-│   └── question-bank.csv 实弹问题示例(可选)
+│   ├── frameworks.md     expanded probing frameworks
+│   └── question-bank.csv live-probed example questions (optional)
 └── examples/
-    ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
-    └── stitch_demo.py     逻辑输出示例(python 自检)
+    ├── login-screen.html UI output example (open in a browser)
+    └── stitch_demo.py    logic output example (python self-check)
 ```
 
 ## FAQ
 
-**它和"直接把需求丢给通用 AI"有什么区别?**
-通用 AI 会顺着你的话往下编。它会在你觉得对的时候停下来问你——问到你暴露真正的问题。
+**How is this different from dumping my requirement on a generic AI?**
+A generic AI rolls with whatever you said. This stops and asks when things are off — until you surface the real problem.
 
-**要配置吗?**
-不用。把 `SKILL.md` 交给 agent 就行。
+**Does it need configuration?**
+No. Hand it `SKILL.md` and it's ready.
 
-**问烦了怎么办?**
-它只问你没想清楚的部分。你想清楚的,它不重复问。
+**What if it asks too much?**
+It only asks about parts you haven't thought through. What you've already decided, it leaves alone.
 
 ## Roadmap
 
-- [x] 追问规则 + 提问框架(通用/扫描/UI)
-- [x] 输出协议(数据流 + 可运行代码)
-- [ ] 更多品类框架(影像 / 检验报告 / 数据合规)
-- [ ] 金字塔切片拼接查看器
-- [ ] 标准插件化(`.claude-plugin`)
+- [x] Asking rules + probing frameworks (generic / scanning / UI)
+- [x] Output contract (data flow + runnable code)
+- [ ] More frameworks (imaging / lab reports / data compliance)
+- [ ] Pyramid-tile stitch viewer
+- [ ] Standard plugin packaging (`.claude-plugin`)
 
 ## License
 
-[MIT](LICENSE)。
+[MIT](LICENSE).
