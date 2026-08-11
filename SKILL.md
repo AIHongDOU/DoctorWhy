@@ -84,7 +84,8 @@ description: 医疗软件需求追问器。开发者说不清医疗需求时,用
 - `references/rules-lis-hl7.md` — LIS/HL7 对接(消息结构/ORM-ORU/项目映射/ACK/标本关联等 10 条)
 - `references/rules-qc-calibration.md` — 质控与校准(质控门槛/频率/失控/试剂批次/校准追溯/Westgard 等 10 条)
 - `references/rules-regulatory.md` — 监管记录与注册(NMPA 分类/21 CFR Part 11/IEC 62304/V&V/变更控制等 10 条)
-- (更多类别陆续补充: 硬件约束 / 影像 pipeline / 临床验证)
+- `references/rules-hardware.md` — 硬件约束(低倍先行/坐标标定/机械漂移/油镜异步/分区定焦等 10 条)
+- (更多类别陆续补充: 影像 pipeline / 临床验证)
 
 每条含:规则 + 为什么问(医学现实)+ 踩过什么坑(真实事故),并附"能点破什么矛盾"示例。
 
