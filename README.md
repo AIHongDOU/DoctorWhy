@@ -31,9 +31,73 @@
 
 一个模糊需求进来,它用追问把它变清晰:
 
-<p align="center">
-  <img src="docs/images/workflow.svg" alt="工作流动画" width="90%"/>
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 620" font-family="'Segoe UI','Microsoft YaHei',sans-serif" width="100%" max-width="780" style="background:#0d1117;border-radius:12px">
+  <style>
+    .node { fill: #2f81f7; }
+    .node-dark { fill: #161b22; }
+    .text { fill: #ffffff; font-size: 14px; text-anchor: middle; font-weight: 600; }
+    .sub { fill: #8b98a5; font-size: 12px; text-anchor: middle; }
+    .line { stroke: #8b98a5; stroke-width: 2; fill: none; }
+    .line-flow { stroke: #2f81f7; stroke-width: 2.5; fill: none; stroke-dasharray: 7 7; animation: dash 1s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -14; } }
+  </style>
+
+  <rect x="290" y="24" width="200" height="46" rx="12" class="node"/>
+  <text x="390" y="51" class="text">模糊的医疗需求</text>
+
+  <rect x="290" y="130" width="200" height="46" rx="12" class="node"/>
+  <text x="390" y="157" class="text">追问引擎</text>
+
+  <rect x="290" y="250" width="200" height="46" rx="12" class="node"/>
+  <text x="390" y="277" class="text">能画出完整数据流?</text>
+
+  <rect x="290" y="380" width="200" height="46" rx="12" class="node"/>
+  <text x="390" y="407" class="text">输出方案 + 代码</text>
+
+  <rect x="540" y="130" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="153" class="text">① 复述理解,确认对齐</text>
+  <rect x="540" y="185" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="208" class="text">② 按框架维度推进</text>
+  <rect x="540" y="240" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="263" class="text">③ 点破隐含矛盾</text>
+  <rect x="540" y="295" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="318" class="text">④ 补全领域现实</text>
+
+  <rect x="540" y="380" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="403" class="text">数据流图 / 已定决策</text>
+  <rect x="540" y="435" width="210" height="36" rx="8" class="node-dark"/>
+  <text x="645" y="458" class="text">可运行代码</text>
+
+  <path d="M390,70 L390,124" class="line" marker-end="url(#arrowMain)"/>
+  <path d="M390,176 L390,244" class="line" marker-end="url(#arrowMain)"/>
+  <path d="M390,296 L390,374" class="line" marker-end="url(#arrowMain)"/>
+
+  <path d="M490,153 L534,153" class="line" marker-end="url(#arrowRight)"/>
+  <path d="M645,166 L645,183" class="line" marker-end="url(#arrowRight)"/>
+  <path d="M645,221 L645,238" class="line" marker-end="url(#arrowRight)"/>
+  <path d="M645,276 L645,293" class="line" marker-end="url(#arrowRight)"/>
+
+  <path d="M540,313 L490,313 L490,273 L540,273" class="line" marker-end="url(#arrowRight)"/>
+  <text x="460" y="305" class="sub">反复</text>
+
+  <path d="M490,403 L534,403" class="line" marker-end="url(#arrowRight)"/>
+  <path d="M490,416 L534,457" class="line" marker-end="url(#arrowRight)"/>
+
+  <path d="M290,273 L200,273 L200,153 L284,153" class="line-flow" marker-end="url(#arrowBlue)"/>
+  <text x="245" y="265" class="sub">否,继续追问</text>
+
+  <defs>
+    <marker id="arrowMain" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b98a5"/>
+    </marker>
+    <marker id="arrowRight" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b98a5"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f81f7"/>
+    </marker>
+  </defs>
+</svg>
 
 追问的样子:
 
