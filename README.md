@@ -16,6 +16,14 @@
 
 一个模糊需求进来,它用追问把它变清晰:
 
+<p align="center">
+  <img src="docs/images/story-1-confused.png" width="30%" alt="第一步:说不清"/>
+  <img src="docs/images/story-2-probing.png" width="30%" alt="第二步:被追问"/>
+  <img src="docs/images/story-3-clear.png" width="30%" alt="第三步:变清晰"/>
+</p>
+
+> 第一步说不清,第二步被问清,第三步直接出方案和代码。
+
 ```mermaid
 flowchart TD
     A[模糊的医疗需求] --> B[追问引擎]
