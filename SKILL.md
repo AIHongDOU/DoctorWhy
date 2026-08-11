@@ -82,7 +82,8 @@ description: 医疗软件需求追问器。开发者说不清医疗需求时,用
 - `references/rules-device-ui.md` — 器械 UI 规范(高对比/色盲警示/防误触/数据布局等 10 条)
 - `references/rules-compliance.md` — 数据与合规(PHI/日志/审计/权限/加密/存储边界等 10 条)
 - `references/rules-lis-hl7.md` — LIS/HL7 对接(消息结构/ORM-ORU/项目映射/ACK/标本关联等 10 条)
-- (更多类别陆续补充: 质控校准 / 监管记录 / 硬件约束 / 影像 pipeline / 临床验证)
+- `references/rules-qc-calibration.md` — 质控与校准(质控门槛/频率/失控/试剂批次/校准追溯/Westgard 等 10 条)
+- (更多类别陆续补充: 监管记录 / 硬件约束 / 影像 pipeline / 临床验证)
 
 每条含:规则 + 为什么问(医学现实)+ 踩过什么坑(真实事故),并附"能点破什么矛盾"示例。
 
