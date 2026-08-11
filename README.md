@@ -12,17 +12,17 @@
 
 这句话里藏着一个真正的目标:"选区时一瞬间知道区域构成"。但通用 AI 缺医疗/硬件领域知识,补不上"坐标怎么换算""缓存和正式库什么关系""识别要跑在哪"这些隐含约束。med-req-prober 的存在,就是替开发者把这些缺口一个个问出来。
 
-## 工作方式
-
-一个模糊需求进来,它用追问把它变清晰:
-
 <p align="center">
   <img src="docs/images/story-1-confused.png" width="30%" alt="第一步:说不清"/>
   <img src="docs/images/story-2-probing.png" width="30%" alt="第二步:被追问"/>
   <img src="docs/images/story-3-clear.png" width="30%" alt="第三步:变清晰"/>
 </p>
 
-> 第一步说不清,第二步被问清,第三步直接出方案和代码。
+<p align="center"><em>说不清 → 被问清 → 出方案</em></p>
+
+## 工作方式
+
+一个模糊需求进来,它用追问把它变清晰:
 
 ```mermaid
 flowchart TD
