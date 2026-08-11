@@ -124,6 +124,7 @@ med-req-prober/
 ├── docs/images/          logo、演示图
 ├── references/
 │   ├── rules-device-ui.md 暗规则库·器械 UI 规范(核心资产)
+│   ├── rules-compliance.md 暗规则库·数据与合规(核心资产)
 │   └── question-bank.csv  实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
