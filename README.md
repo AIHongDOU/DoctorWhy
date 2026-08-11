@@ -127,6 +127,7 @@ med-req-prober/
 │   ├── rules-compliance.md 暗规则库·数据与合规(核心资产)
 │   ├── rules-lis-hl7.md    暗规则库·LIS/HL7 对接(核心资产)
 │   ├── rules-qc-calibration.md 暗规则库·质控与校准(核心资产)
+│   ├── rules-regulatory.md  暗规则库·监管记录与注册(核心资产)
 │   └── question-bank.csv   实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
