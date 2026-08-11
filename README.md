@@ -74,7 +74,7 @@ med-req-prober 换个方式:它**不急着写**,它问你。
 一个模糊需求进来,它用追问把它问清楚:
 
 <p align="center">
-  <img src="docs/images/workflow-v3.svg" alt="工作流程" width="100%"/>
+  <img src="docs/images/workflow-anim.png" alt="工作方式" width="90%"/>
 </p>
 
 ## 规则与框架,而非问题库
