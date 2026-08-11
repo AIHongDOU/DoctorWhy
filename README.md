@@ -1,31 +1,31 @@
 <p align="center">
-  <img src="docs/images/logo.png" width="220" alt="med-req-prober mascot"/>
+  <img src="docs/images/logo.png" width="300" alt="mascot"/>
 </p>
 
-<h1 align="center">med-req-prober</h1>
+<h1 align="center" style="margin-top:0;letter-spacing:2px">med-req-prober</h1>
 
 <p align="center">
-  <em>你讲不清医疗需求。它问,直到你我都懂。</em>
+  <em>说不清的医疗需求,它替你一点一点问清楚,然后直接写代码。</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Claude%20Skill-ready-111111?style=flat-square&color=111111" alt="Claude Skill">
-  <img src="https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-111111?style=flat-square&color=111111" alt="Works with">
-  <img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square&color=111111" alt="MIT license">
-  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square&color=111111" alt="Stars">
+  <img src="https://img.shields.io/badge/Claude%20Skill-ready-2f81f7?style=flat-square" alt="Claude Skill">
+  <img src="https://img.shields.io/badge/Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-2f81f7?style=flat-square" alt="Works with">
+  <img src="https://img.shields.io/badge/MIT%20License-3fb950?style=flat-square" alt="MIT license">
+  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square&color=2f81f7" alt="Stars">
 </p>
 
 ---
 
-You know him. 黑眼圈,乱头发,皱巴巴的白大褂下露出连帽卫衣。你跟他讲需求,他眯着眼听一会儿,然后开始一个接一个地问你——问到你把自己没想清楚的东西,全部想清楚为止。
+还在为"怎么跟 AI 讲医疗需求"发愁?你不是一个人。
 
-med-req-prober 把他塞进了你的 AI agent。
+你会说"我要在 100X 扫描的时候分类细胞",但说不清要**边拍边分**还是**拍完再分**、分类到什么粒度、结果给谁看。你说了一大段,AI 点头,然后写出一堆你不知道对不对的东西。
 
-## Before / After
+med-req-prober 换个方式:它**不急着写**,它问你。
 
-你想要 100X 扫描时能分类细胞。你的 agent 直接开写——模型接口、坐标转换、缓存、报告……它可能写得出来,但你心里没底:**它真的懂你想干嘛吗?**
+## 它怎么干活
 
-用 med-req-prober:
+你的需求越模糊,它越来劲:
 
 ```
 开发者:我想在100X扫描的时候,可以分类细胞类别。
@@ -40,8 +40,6 @@ med-req-prober 把他塞进了你的 AI agent。
 → 输出:数据流图 + 接口骨架 + 缓存/坐标方案
 ```
 
-同样的"登录界面太普通":
-
 ```
 开发者:登录界面太普通不美观。
 
@@ -55,35 +53,37 @@ med-req-prober 把他塞进了你的 AI agent。
 → 输出:一版能直接跑的医疗质感登录界面(HTML)
 ```
 
-更多实弹产物在 [examples/](examples/)。
+它问到你没想清楚的部分全想清楚,然后才动手。更多实弹产物在 [examples/](examples/)。
 
-## 它怎么做到
-
-一个模糊需求进来,它用追问把它问清楚:
-
-<p align="center">
-  <img src="docs/images/workflow-v2.svg" alt="工作流程" width="90%"/>
-</p>
-
-关键是它**不靠问题库碰运气**,而是按框架问。规则、框架、推进机制:
-
-- **追问规则**:小问题、具体到界面/操作、一次一个、医学术语用大白话、按优先级、拆目标、收敛就停。
-- **提问框架**:通用(目标→用户→主流程→数据→边界→交付),叠加扫描/影像、UI/登录两个品类。
-- **推进机制**:复述对齐 → 按维度走 → 抓矛盾 → 注入现实 → 收敛。
-
-## 为什么需要它
+## 为什么不能直接丢给通用 AI
 
 描述医疗需求时,开发者往往说出的是**手段**,不是**目的**:
 
 > "我要在 20x 扫描时加模型识别,存细胞坐标转真实物理坐标到缓存库,选区时一瞬间知道区域细胞构成。"
 
-这句话里藏着真正的目标:"选区时一瞬间知道区域构成"。但通用 AI 缺医疗/硬件领域知识,补不上"坐标怎么换算""缓存和正式库什么关系""识别要跑在哪"这些隐含约束。它替你把缺口一个个问出来。
+这句话里藏着真正的目标:"选区时一瞬间知道区域构成"。但通用 AI 缺医疗/硬件领域知识,补不上"坐标怎么换算""缓存和正式库什么关系""识别要跑在哪"这些隐含约束。它替你把这些缺口一个个问出来。
 
 <p align="center">
   <img src="docs/images/story-1-confused.png" width="30%" alt="说不清"/>
   <img src="docs/images/story-2-probing.png" width="30%" alt="被追问"/>
   <img src="docs/images/story-3-clear.png" width="30%" alt="变清晰"/>
 </p>
+
+## 追问的过程(动图)
+
+一个模糊需求进来,它用追问把它问清楚:
+
+<p align="center">
+  <img src="docs/images/workflow-v3.svg" alt="工作流程" width="100%"/>
+</p>
+
+## 规则与框架,而非问题库
+
+- **追问规则**:小问题、具体到界面/操作、一次一个、医学术语用大白话、按优先级、拆目标、收敛就停。
+- **提问框架**:通用(目标→用户→主流程→数据→边界→交付),叠加扫描/影像、UI/登录两个品类。
+- **推进机制**:复述对齐 → 按维度走 → 抓矛盾 → 注入现实 → 收敛。
+
+框架决定"往哪问",机制决定"怎么问"。它不靠堆问题碰运气,而是接住任何需求。
 
 ## 如何使用
 
@@ -136,14 +136,11 @@ med-req-prober/
 **它和"直接把需求丢给通用 AI"有什么区别?**
 通用 AI 会顺着你的话往下编。它会在你觉得对的时候停下来问你——问到你暴露真正的问题。
 
-**它要配置吗?**
+**要配置吗?**
 不用。把 `SKILL.md` 交给 agent 就行。
 
 **问烦了怎么办?**
 它只问你没想清楚的部分。你想清楚的,它不重复问。
-
-**它能画完整数据流了吗?**
-画不出来?那就继续问。问到你画出来为止。
 
 ## Roadmap
 
@@ -155,4 +152,4 @@ med-req-prober/
 
 ## License
 
-[MIT](LICENSE)。最短的开源协议。
+[MIT](LICENSE)。
