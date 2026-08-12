@@ -129,6 +129,7 @@ med-req-prober/
 │   ├── rules-qc-calibration.md 暗规则库·质控与校准(核心资产)
 │   ├── rules-regulatory.md  暗规则库·监管记录与注册(核心资产)
 │   ├── rules-hardware.md    暗规则库·硬件约束(核心资产)
+│   ├── rules-imaging.md     暗规则库·影像 pipeline(核心资产)
 │   └── question-bank.csv   实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
