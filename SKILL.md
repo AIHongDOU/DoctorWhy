@@ -86,7 +86,7 @@ description: 医疗软件需求追问器。开发者说不清医疗需求时,用
 - `references/rules-regulatory.md` — 监管记录与注册(NMPA 分类/21 CFR Part 11/IEC 62304/V&V/变更控制等 10 条)
 - `references/rules-hardware.md` — 硬件约束(低倍先行/坐标标定/机械漂移/油镜异步/分区定焦等 10 条)
 - `references/rules-imaging.md` — 影像 pipeline(金字塔切片/瓦片/16-bit 动态范围/重叠对齐/原始与处理层分离等 10 条)
-- (更多类别陆续补充: 临床验证)
+- `references/rules-clinical-validation.md` — 临床验证(敏感性/特异性/金标准/PPV/防泄漏/人机协同等 10 条)
 
 每条含:规则 + 为什么问(医学现实)+ 踩过什么坑(真实事故),并附"能点破什么矛盾"示例。
 
