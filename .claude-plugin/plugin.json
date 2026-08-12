@@ -1,5 +1,5 @@
 {
-  "name": "DoctorWhy",
+  "name": "doctorwhy",
   "description": "医疗需求追问器:说不清的医疗需求,它问清楚再动手。检测到模糊的医疗需求时自动进入追问,能自查的事实不问用户,只问必须定的决策;触发合规/患者安全红线时明确拒绝。",
   "author": {
     "name": "AIHongDOU"
