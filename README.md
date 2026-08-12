@@ -101,49 +101,97 @@ flowchart TD
 
 **这是通用 AI 抄不走的护城河** —— 抄一套追问流程容易,积累 8 类医疗暗规则难。它来自真实医疗器械开发(如 MC-01 骨髓分析仪)踩过的坑。
 
-## 如何使用
+## 快速开始
 
-两种方式:**插件安装**(Claude Code 支持 `/plugin install`,像正规软件一样)或**读即用**(任何工具拷 SKILL.md 就生效)。
+最快的用法,一句话:
+
+> 让 AI 读 `SKILL.md`,然后描述一个模糊的医疗需求,它就开始追问你。
+
+完整安装见下方各工具分节。
+
+## 安装
+
+DoctorWhy 有两种形态,按需选择:
+
+- **插件安装**(仅 Claude Code):像正规软件一样 `/plugin install`,能 `/doctorwhy` 手动调用、自动触发。推荐。
+- **读即用**(所有工具):把 `SKILL.md` 交给任何 AI 助手,读完即生效。最通用,无安装门槛。
 
 ### Claude Code · 插件安装(推荐)
 
-```bash
+**前置**:装有 [Claude Code](https://docs.anthropic.com/claude-code) 且已登录。
+
+第一步,添加 marketplace:
+
+```
 /plugin marketplace add AIHongDOU/DoctorWhy
-/plugin install DoctorWhy
 ```
 
-安装后,`/doctor-why` 手动进入追问模式;检测到模糊医疗需求也会自动触发。
+第二步,安装插件:
 
-### 任何工具 · 读即用
+```
+/plugin install doctorwhy
+```
 
-以 AI 编程助手在对话里读取本仓库的 `SKILL.md` 为前提。
+安装成功后在对话里输入 `/doctorwhy:doctorwhy` 手动进入追问模式;或者直接抛一个模糊的医疗需求,它会自动触发。
 
-### Claude Code
+**如果 `/plugin marketplace add` 弹了输入框**(部分版本要交互输入),直接粘贴 `git@github.com:AIHongDOU/DoctorWhy.git` 回车。
+
+**如果 HTTPS 安装超时**:国内网络连 GitHub HTTPS 可能慢/超时。优先用 SSH 源(见上),或直接走下面的"读即用"。
+
+### Claude Code · 读即用(备选)
 
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
 cd DoctorWhy
-claude   # 说:读 SKILL.md,按它的规则追问我的需求
+claude
 ```
+
+进入后说:**"读 SKILL.md,按它的规则追问我的医疗需求"**。
 
 ### Codex (OpenAI)
 
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
 cd DoctorWhy
-codex   # 说:把 SKILL.md 当成系统提示,然后按它的流程问我
+codex
 ```
 
-### Trae / Cursor
+进入后说:**"把 SKILL.md 当成系统提示,然后按它的流程追问我的需求"**。
+
+### Trae
 
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
 ```
 
-- **Trae**:对话里粘贴 `SKILL.md` 全文,或说"按 /DoctorWhy 的方式追问我的需求"。
-- **Cursor**:把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,说"用 DoctorWhy 帮我问清楚这个需求"。
+在 Trae 对话里:粘贴 `SKILL.md` 全文,或说"按 /doctorwhy 的方式追问我的需求"。
 
-> 原则不变:无论哪个工具,**把 `SKILL.md` 交给 AI**,它就能按这套规则追问你的医疗需求。`references/` 和 `examples/` 是配套素材。**描述清楚的需求不需要走追问** —— 只有说不清时才需要它。
+### Cursor
+
+```bash
+git clone git@github.com:AIHongDOU/DoctorWhy.git
+```
+
+把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,然后说:"用 DoctorWhy 帮我问清楚这个需求"。
+
+### 通用原则
+
+无论哪个工具:**把 `SKILL.md` 交给 AI**,它就能按这套规则追问你的医疗需求。`references/` 和 `examples/` 是配套素材。
+
+**描述清楚的需求不需要走追问** —— 只有说不清时才需要它。
+
+### 卸载(Claude Code 插件)
+
+```
+/plugin uninstall doctorwhy
+```
+
+### 常见问题
+
+**装不上 / 报错怎么办?**
+- 网络超时 → 优先 SSH 源,或直接"读即用"(任何工具都能用,零安装)。
+- marketplace 解析失败 → 确认你装的是最新版,`/plugin marketplace update AIHongDOU/DoctorWhy` 后再装。
+- 命令名 → 插件 skill 是 `插件名:skill名` 格式,输入 `/doctorwhy:doctorwhy`,或直接抛需求自动触发。
 
 ## 仓库结构
 
