@@ -1,0 +1,22 @@
+{
+  "name": "DoctorWhy",
+  "version": "3.0.0",
+  "description": "医疗需求追问器:说不清的医疗需求,它问清楚再动手。面向医疗软件开发者的需求澄清 skill。",
+  "author": {
+    "name": "AIHongDOU"
+  },
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "DoctorWhy",
+      "description": "医疗软件需求追问器。检测到医疗/扫描/影像/检测类需求且描述模糊时触发,用一问一答(或批量 frontier 追问)逐步问清楚,再产出可运行代码。能查证的事实由 agent 自查,只问用户必须定的决策;触发合规/患者安全红线时明确拒绝。"
+    }
+  ],
+  "commands": [
+    {
+      "name": "doctor-why",
+      "description": "进入需求追问模式:把当前模糊的医疗需求盘问清楚,直到双方理解一致再输出方案。",
+      "skill": "DoctorWhy"
+    }
+  ]
+}

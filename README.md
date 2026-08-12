@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/images/logo.png" width="280" alt="med-req-prober mascot"/>
+  <img src="docs/images/logo.png" width="280" alt="DoctorWhy mascot"/>
 </p>
 
-<h1 align="center">med-req-prober</h1>
+<h1 align="center">DoctorWhy</h1>
 
 <p align="center">
   <em>说不清的医疗需求,它替你一点一点问清楚,然后直接写代码。</em>
@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Claude%20Skill-ready-2f81f7?style=flat-square" alt="Claude Skill">
   <img src="https://img.shields.io/badge/Claude%20Code%20%7C%20Codex%20%7C%20Trae%20%7C%20Cursor-2f81f7?style=flat-square" alt="Works with">
   <img src="https://img.shields.io/badge/MIT%20License-3fb950?style=flat-square" alt="MIT license">
-  <img src="https://img.shields.io/github/stars/AIHongDOU/med-req-prober?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/stars/AIHongDOU/DoctorWhy?style=flat-square" alt="Stars">
 </p>
 
 ---
@@ -21,7 +21,7 @@
 
 你会说"我要在 100X 扫描的时候分类细胞",但说不清要**边拍边分**还是**拍完再分**、分类到什么粒度、结果给谁看。你说了一大段,AI 点头,然后写出一堆你不知道对不对的东西。
 
-med-req-prober 换个方式:它**不急着写**,它问你。
+DoctorWhy 换个方式:它**不急着写**,它问你。
 
 ## 它怎么干活
 
@@ -103,41 +103,55 @@ flowchart TD
 
 ## 如何使用
 
+两种方式:**插件安装**(Claude Code 支持 `/plugin install`,像正规软件一样)或**读即用**(任何工具拷 SKILL.md 就生效)。
+
+### Claude Code · 插件安装(推荐)
+
+```bash
+/plugin marketplace add AIHongDOU/DoctorWhy
+/plugin install DoctorWhy
+```
+
+安装后,`/doctor-why` 手动进入追问模式;检测到模糊医疗需求也会自动触发。
+
+### 任何工具 · 读即用
+
 以 AI 编程助手在对话里读取本仓库的 `SKILL.md` 为前提。
 
 ### Claude Code
 
 ```bash
-git clone git@github.com:AIHongDOU/med-req-prober.git
-cd med-req-prober
+git clone git@github.com:AIHongDOU/DoctorWhy.git
+cd DoctorWhy
 claude   # 说:读 SKILL.md,按它的规则追问我的需求
 ```
 
 ### Codex (OpenAI)
 
 ```bash
-git clone git@github.com:AIHongDOU/med-req-prober.git
-cd med-req-prober
+git clone git@github.com:AIHongDOU/DoctorWhy.git
+cd DoctorWhy
 codex   # 说:把 SKILL.md 当成系统提示,然后按它的流程问我
 ```
 
 ### Trae / Cursor
 
 ```bash
-git clone git@github.com:AIHongDOU/med-req-prober.git
+git clone git@github.com:AIHongDOU/DoctorWhy.git
 ```
 
-- **Trae**:对话里粘贴 `SKILL.md` 全文,或说"按 /med-req-prober 的方式追问我的需求"。
-- **Cursor**:把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,说"用 med-req-prober 帮我问清楚这个需求"。
+- **Trae**:对话里粘贴 `SKILL.md` 全文,或说"按 /DoctorWhy 的方式追问我的需求"。
+- **Cursor**:把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,说"用 DoctorWhy 帮我问清楚这个需求"。
 
-> 原则不变:无论哪个工具,**把 `SKILL.md` 交给 AI**,它就能按这套规则追问你的医疗需求。`references/` 和 `examples/` 是配套素材。
+> 原则不变:无论哪个工具,**把 `SKILL.md` 交给 AI**,它就能按这套规则追问你的医疗需求。`references/` 和 `examples/` 是配套素材。**描述清楚的需求不需要走追问** —— 只有说不清时才需要它。
 
 ## 仓库结构
 
 ```
-med-req-prober/
+DoctorWhy/
 ├── SKILL.md              规则、框架、推进机制、输出协议
 ├── README.md
+├── .claude-plugin/       插件清单(plugin.json / marketplace.json)
 ├── docs/images/          logo、演示图
 ├── references/
 │   ├── rules-device-ui.md  暗规则库·器械 UI 规范(核心资产)
