@@ -1,0 +1,27 @@
+{
+  "name": "doctorwhy",
+  "version": "3.0.0",
+  "description": "医疗需求追问器:说不清的医疗需求,它问清楚再动手。检测到模糊的医疗需求时自动进入追问,能自查的事实不问用户,只问必须定的决策;触发合规/患者安全红线时明确拒绝。",
+  "author": {
+    "name": "AIHongDOU",
+    "url": "https://github.com/AIHongDOU"
+  },
+  "homepage": "https://github.com/AIHongDOU/DoctorWhy",
+  "repository": "https://github.com/AIHongDOU/DoctorWhy",
+  "license": "MIT",
+  "keywords": ["medical", "requirements", "clarification", "healthcare", "productivity"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "DoctorWhy",
+    "shortDescription": "医疗需求追问器",
+    "longDescription": "说不清的医疗需求,它问清楚再动手。面向医疗软件开发者的需求澄清 skill:小问题逐轮追问、医学术语大白话、点破隐含矛盾、触发合规/患者安全红线时明确拒绝。",
+    "developerName": "AIHongDOU",
+    "category": "Productivity",
+    "capabilities": ["Instructions"],
+    "websiteURL": "https://github.com/AIHongDOU/DoctorWhy",
+    "defaultPrompt": [
+      "Read the doctorwhy skill and probe my medical software requirement per its rules.",
+      "Clarify this vague medical requirement by asking one question at a time."
+    ]
+  }
+}

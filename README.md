@@ -150,6 +150,17 @@ claude
 
 ### Codex (OpenAI)
 
+**插件安装(推荐,支持斜杠调用):**
+
+```bash
+codex plugin marketplace add AIHongDOU/DoctorWhy
+codex plugin add doctorwhy
+```
+
+装完在 Codex 会话里可用 `@doctorwhy`(Codex 的 skill 调用方式)触发。
+
+**读即用(备选):**
+
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
 cd DoctorWhy
@@ -199,7 +210,9 @@ git clone git@github.com:AIHongDOU/DoctorWhy.git
 DoctorWhy/
 ├── SKILL.md              规则、框架、推进机制、输出协议
 ├── README.md
-├── .claude-plugin/       插件清单(plugin.json / marketplace.json)
+├── .claude-plugin/       Claude Code 插件(plugin.json / marketplace.json)
+├── .codex-plugin/        Codex 插件(plugin.json)
+├── skills/               Codex skill 载体(doctorwhy/SKILL.md + references)
 ├── docs/images/          logo、演示图
 ├── references/
 │   ├── rules-device-ui.md  暗规则库·器械 UI 规范(核心资产)
@@ -231,9 +244,10 @@ DoctorWhy/
 
 - [x] 追问规则 + 提问框架(通用/扫描/UI)
 - [x] 输出协议(数据流 + 可运行代码)
+- [x] 插件化(Claude Code `.claude-plugin` + Codex `.codex-plugin`)
 - [ ] 更多品类框架(影像 / 检验报告 / 数据合规)
 - [ ] 金字塔切片拼接查看器
-- [ ] 标准插件化(`.claude-plugin`)
+- [ ] 更多工具适配(Cursor / Gemini / OpenCode)
 
 ## License
 
