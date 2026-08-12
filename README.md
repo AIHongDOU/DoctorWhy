@@ -154,7 +154,7 @@ claude
 
 ```bash
 codex plugin marketplace add AIHongDOU/DoctorWhy
-codex plugin add doctorwhy
+codex plugin add doctorwhy@DoctorWhy
 ```
 
 装完在 Codex 会话里可用 `@doctorwhy`(Codex 的 skill 调用方式)触发。
