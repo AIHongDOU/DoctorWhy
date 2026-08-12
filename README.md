@@ -181,9 +181,18 @@ git clone git@github.com:AIHongDOU/DoctorWhy.git
 
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
+cp DoctorWhy/.cursor/rules/doctorwhy.mdc .cursor/rules/doctorwhy.mdc
 ```
 
-把 `SKILL.md` 加入 `.cursor/rules/` 或粘贴进对话,然后说:"用 DoctorWhy 帮我问清楚这个需求"。
+把 `doctorwhy.mdc` 放进项目 `.cursor/rules/`(或全局),Cursor 会自动应用。然后说:"用 DoctorWhy 帮我问清楚这个需求"。
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/AIHongDOU/DoctorWhy
+```
+
+装后 `AGENTS.md` 作为常驻上下文自动加载,检测到模糊医疗需求即触发。
 
 ### 通用原则
 
@@ -212,6 +221,9 @@ DoctorWhy/
 ├── README.md
 ├── .claude-plugin/       Claude Code 插件(plugin.json / marketplace.json)
 ├── .codex-plugin/        Codex 插件(plugin.json)
+├── .cursor/rules/        Cursor rules(doctorwhy.mdc)
+├── gemini-extension.json Gemini CLI 扩展
+├── AGENTS.md             Gemini/多工具常驻上下文
 ├── skills/               Codex skill 载体(doctorwhy/SKILL.md + references)
 ├── docs/images/          logo、演示图
 ├── references/
@@ -244,10 +256,10 @@ DoctorWhy/
 
 - [x] 追问规则 + 提问框架(通用/扫描/UI)
 - [x] 输出协议(数据流 + 可运行代码)
-- [x] 插件化(Claude Code `.claude-plugin` + Codex `.codex-plugin`)
+- [x] 插件化(Claude Code / Codex / Cursor / Gemini CLI)
 - [ ] 更多品类框架(影像 / 检验报告 / 数据合规)
 - [ ] 金字塔切片拼接查看器
-- [ ] 更多工具适配(Cursor / Gemini / OpenCode)
+- [ ] 更多工具适配(OpenCode / Copilot / 其他)
 
 ## License
 
