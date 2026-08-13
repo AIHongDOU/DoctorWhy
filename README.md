@@ -112,42 +112,48 @@ flowchart TD
 
 ## 安装
 
-DoctorWhy 有两种形态,按需选择:
+DoctorWhy 三种形态,按你的环境选择:
 
-- **插件安装**(仅 Claude Code):像正规软件一样 `/plugin install`,能 `/doctorwhy` 手动调用、自动触发。推荐。
-- **读即用**(所有工具):把 `SKILL.md` 交给任何 AI 助手,读完即生效。最通用,无安装门槛。
+1. **读即用(所有环境,最稳,推荐)** —— 把 `SKILL.md` 交给任何 AI 助手,读完即生效。零安装、零依赖、任何环境都能用。**如果下面的插件安装遇到问题,直接用它兜底。**
+2. **插件安装(仅标准终端 Claude Code)** —— 像正规软件一样 `/plugin install`,有斜杠命令、可自动触发。
+3. **user skill(托管环境,如桌面 App/IDE)** —— 拷进 `~/.claude/skills/`,这个环境原生支持。
 
-### Claude Code · 插件安装(推荐)
+### 方式一 · 读即用(所有环境,推荐)
 
-**前置**:装有 [Claude Code](https://docs.anthropic.com/claude-code) 且已登录。
+在任意 AI 助手会话里,说一句:
 
-第一步,添加 marketplace:
+> **"读 `SKILL.md`,按它的规则追问我的医疗需求"**
 
-```
+把本仓库的 `SKILL.md` 交给它(或告诉它路径),读完即生效。**这是对所有人最稳的方式** —— 不依赖网络、不依赖插件系统、不依赖具体工具。
+
+### 方式二 · 插件安装(标准终端 Claude Code)
+
+> 适用:你在**独立终端**里运行 `claude`(标准用法)。若你是桌面 App / IDE 托管环境,请用方式三或方式一。
+
+```bash
+# 添加 marketplace
 /plugin marketplace add AIHongDOU/DoctorWhy
-```
 
-第二步,安装插件:
-
-```
+# 安装插件
 /plugin install doctorwhy
 ```
 
-安装成功后在对话里输入 `/doctorwhy:doctorwhy` 手动进入追问模式;或者直接抛一个模糊的医疗需求,它会自动触发。
+安装后输入 `/doctorwhy:doctorwhy` 手动进入追问;或抛一个模糊的医疗需求自动触发。
 
-**如果 `/plugin marketplace add` 弹了输入框**(部分版本要交互输入),直接粘贴 `git@github.com:AIHongDOU/DoctorWhy.git` 回车。
+### 方式三 · user skill(托管环境:桌面 App / IDE)
 
-**如果 HTTPS 安装超时**:国内网络连 GitHub HTTPS 可能慢/超时。优先用 SSH 源(见上),或直接走下面的"读即用"。
+> 适用:你运行 Claude 时**不是**独立终端,而是桌面应用 / IDE 内置(宿主接管了插件系统,`/plugin` 可能报"Unrecognized token"或"not available")。
 
-### Claude Code · 读即用(备选)
+把 skill 拷进标准 skills 目录(此目录所有环境原生支持):
 
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
-cd DoctorWhy
-claude
+mkdir -p ~/.claude/skills/doctorwhy
+cp DoctorWhy/SKILL.md ~/.claude/skills/doctorwhy/
+cp -r DoctorWhy/references ~/.claude/skills/doctorwhy/
 ```
 
-进入后说:**"读 SKILL.md,按它的规则追问我的医疗需求"**。
+新开会话,斜杠命令 **`/doctorwhy`** 即可用;或直接抛一个模糊的医疗需求自动触发。
 
 ### Codex (OpenAI)
 
@@ -209,10 +215,15 @@ gemini extensions install https://github.com/AIHongDOU/DoctorWhy
 
 ### 常见问题
 
+**`/plugin marketplace add` 报 `Unrecognized token ''` / `not available` 怎么办?**
+→ 你运行在**托管环境**(桌面 App / IDE 内置),宿主接管了插件系统,不认 marketplace。改用**方式三(user skill)**或**方式一(读即用)**,这两条在托管环境原生可用。
+
 **装不上 / 报错怎么办?**
-- 网络超时 → 优先 SSH 源,或直接"读即用"(任何工具都能用,零安装)。
-- marketplace 解析失败 → 确认你装的是最新版,`/plugin marketplace update AIHongDOU/DoctorWhy` 后再装。
-- 命令名 → 插件 skill 是 `插件名:skill名` 格式,输入 `/doctorwhy:doctorwhy`,或直接抛需求自动触发。
+- 网络超时 → 优先 SSH 源,或直接用"读即用"(任何工具、任何环境,零安装)。
+- marketplace 解析失败 → 如果你是标准终端,`/plugin marketplace update AIHongDOU/DoctorWhy` 后再装;若仍失败,走 user skill 或读即用。
+- 命令名 → 插件 skill 是 `插件名:skill名` 格式(`/doctorwhy:doctorwhy`);user skill 是 `/doctorwhy`。或直接抛需求自动触发。
+
+**核心原则:遇到任何安装问题,直接"读即用" —— 把 `SKILL.md` 交给 AI 即可,它一定能用。**
 
 ## 仓库结构
 
