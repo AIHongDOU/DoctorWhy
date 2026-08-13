@@ -1,8 +1,9 @@
 ---
 name: doctorwhy
 description: 医疗软件需求追问器。开发者说不清医疗需求时,用一问一答逐步问清楚 —— 大到框架、小到细节,问清楚就出示意骨架方案。用大白话解释医学/硬件概念,帮不懂医疗的开发者把模糊想法翻译成能执行的方案。
-version: 3.0.0
+version: 3.1.0
 changelog:
+  - "3.1.0: 新增暗规则库第 9 类——标本前处理与样本变量(禁欲/液化/稀释/抗凝/温控/双样本)"
   - "3.0.0: 更名 DoctorWhy,补齐 .claude-plugin 插件结构(可安装/可触发)"
   - "2.3.0: 吸收 grill-me 精华——frontier 批量问(设计树/前沿/轮)、事实与决策分离"
   - "2.2.0: 红线机制(合规/患者安全,触发即拒绝,不产出绕过方案)"
@@ -192,6 +193,7 @@ UI 类 HTML/CSS 单文件(浏览器可开),逻辑类接口/数据流骨架,**每
    - 检测仪器 → `rules-qc-calibration.md` + `rules-regulatory.md`
    - 显微/扫描/影像 → `rules-hardware.md` + `rules-imaging.md`
    - AI 识别/分类 → `rules-clinical-validation.md` + `rules-hardware.md`
+   - 检验仪器/样本检测(精液/血液/骨髓等)→ `rules-specimen.md` + `rules-qc-calibration.md`
 2. **需要时才展开详情**:追问到相关决策点时,再回看对应库的具体条目。
 3. **不相关的库,不加载**:保持上下文精简。
 
@@ -205,6 +207,7 @@ UI 类 HTML/CSS 单文件(浏览器可开),逻辑类接口/数据流骨架,**每
 - `references/rules-hardware.md` — 硬件约束(低倍先行/坐标标定/机械漂移/油镜异步/分区定焦等 10 条)
 - `references/rules-imaging.md` — 影像 pipeline(金字塔切片/瓦片/16-bit 动态范围/重叠对齐/原始与处理层分离等 10 条)
 - `references/rules-clinical-validation.md` — 临床验证(敏感性/特异性/金标准/PPV/防泄漏/人机协同等 10 条)
+- `references/rules-specimen.md` — 标本前处理与样本变量(禁欲/液化/稀释/抗凝/温控/双样本等 10 条)
 
 每条含:规则 + 为什么问(医学现实)+ 踩过什么坑(真实事故),并附"能点破什么矛盾"示例。每个库文件开头有 **标准来源** 区块,列出每条规则的法规/标准依据(可核对),与标准原文冲突时以标准原文为准。
 
