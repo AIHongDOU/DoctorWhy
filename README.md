@@ -276,18 +276,18 @@ DoctorWhy/
 ├── skills/               Codex skill 载体(doctorwhy/SKILL.md + references)
 ├── docs/images/          logo、演示图
 ├── references/
-│   ├── rules-device-ui.md  暗规则库·器械 UI 规范(核心资产)
-│   ├── rules-compliance.md 暗规则库·数据与合规(核心资产)
-│   ├── rules-lis-hl7.md    暗规则库·LIS/HL7 对接(核心资产)
-│   ├── rules-qc-calibration.md 暗规则库·质控与校准(核心资产)
-│   ├── rules-regulatory.md  暗规则库·监管记录与注册(核心资产)
-│   ├── rules-hardware.md    暗规则库·硬件约束(核心资产)
-│   ├── rules-imaging.md     暗规则库·影像 pipeline(核心资产)
-│   ├── rules-clinical-validation.md 暗规则库·临床验证(核心资产)
-│   ├── rules-specimen.md    暗规则库·标本前处理与样本变量(核心资产)
-│   ├── rules-pathology.md   暗规则库·病理学与数字病理(核心资产)
-│   ├── rules-ai-diagnosis.md 暗规则库·AI 辅助诊断与 SaMD(核心资产)
-│   ├── rules-icu-monitoring.md 暗规则库·ICU 实时监测与报警(核心资产)
+│   ├── rules-device-ui.md  暗规则库·器械 UI 规范
+│   ├── rules-compliance.md 暗规则库·数据与合规
+│   ├── rules-lis-hl7.md    暗规则库·LIS/HL7 对接
+│   ├── rules-qc-calibration.md 暗规则库·质控与校准
+│   ├── rules-regulatory.md  暗规则库·监管记录与注册
+│   ├── rules-hardware.md    暗规则库·硬件约束
+│   ├── rules-imaging.md     暗规则库·影像 pipeline
+│   ├── rules-clinical-validation.md 暗规则库·临床验证
+│   ├── rules-specimen.md    暗规则库·标本前处理与样本变量
+│   ├── rules-pathology.md   暗规则库·病理学与数字病理
+│   ├── rules-ai-diagnosis.md 暗规则库·AI 辅助诊断与 SaMD
+│   ├── rules-icu-monitoring.md 暗规则库·ICU 实时监测与报警
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
     └── stitch_demo.py     逻辑输出示例(python 自检)
