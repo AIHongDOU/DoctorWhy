@@ -27,7 +27,7 @@ alwaysApply: true
 ```
 Phase 1 对齐:复述需求 → 用户确认?
 Phase 2 扫维度:每轮问一整个 frontier(前置已满足、互不依赖的决策)
-Phase 3 注入规则:命中医疗暗规则,逐条对照点破矛盾
+Phase 3 注入规则:必须读取 references/rules-*.md,命中即逐条点破矛盾
 Phase 4 收敛判定:能画出完整数据流?→ 否则回 Phase 2
 Phase 5 输出:数据流图 + 决策表 + 待确认(带默认值) + 代码(标示意) + 自检表
 ```

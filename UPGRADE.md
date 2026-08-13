@@ -38,3 +38,33 @@
 ## 未做（留给后续）
 - 多模型验证（Claude/GLM/豆包）与发布 CI。
 - `eval_score.py` 的 CI 对接（等独立评分数据后做）。
+
+---
+
+## 热修复（v4.0.0 → v4.0.1）
+
+> 基于 2026-08-13 严格复查：v4.0.0 声称"规则库索引补全"但**分发路径**仍有 2 处缺失，且各平台版本声明未同步。本次修复。
+
+### P0 · 分发路径规则库补全
+1. **`skills/doctorwhy/references/` 补 `rules-specimen.md`**：此前该打包路径只有 8 库（漏标本规则），现补全为 9 库，与根目录 `references/` 一致。
+2. **`trae/skills/DoctorWhy/references/` 全量补装**：此前该路径只有 `SKILL.md`、无 `references/`（Phase 3 规则库加载在 Trae 侧为空壳），现复制完整 9 库。
+
+### P0 · 版本声明同步
+3. `.codex-plugin/plugin.json`：version `3.0.0` → `4.0.0`。
+4. `gemini-extension.json`：version `3.0.0` → `4.0.0`。
+
+### P1 · 口径与强制加载同步
+5. `README.md`：规则数 `9 类、90 条` → `9 类、97 条`（实际纯规则 97 条，此前少报）。
+6. `AGENTS.md`：Phase 3 明确"**必须读取 references/rules-*.md**"，与 SKILL.md 对齐。
+7. `.cursor/rules/doctorwhy.mdc`：Phase 3 同样明确"必须读取 references/rules-*.md"。
+
+### 变更文件
+| 文件 | 变更 |
+|---|---|
+| `skills/doctorwhy/references/rules-specimen.md` | 新增（补全为 9 库） |
+| `.trae/skills/DoctorWhy/references/` | 新增 9 个规则库 |
+| `.codex-plugin/plugin.json` | version → 4.0.0 |
+| `gemini-extension.json` | version → 4.0.0 |
+| `README.md` | 90 条 → 97 条 |
+| `AGENTS.md` | Phase 3 强制加载规则库 |
+| `.cursor/rules/doctorwhy.mdc` | Phase 3 强制加载规则库 |
