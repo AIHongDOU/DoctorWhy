@@ -203,11 +203,19 @@ codex
 
 ### Trae
 
+Trae 有原生 skill 安装路径(`.trae/skills/`),仓库里已内置适配文件:
+
 ```bash
 git clone git@github.com:AIHongDOU/DoctorWhy.git
+cp -r DoctorWhy/.trae/skills/DoctorWhy .trae/skills/DoctorWhy
 ```
 
-在 Trae 对话里:粘贴 `SKILL.md` 全文,或说"按 /doctorwhy 的方式追问我的需求"。
+把 `.trae/skills/DoctorWhy` 拷进你项目的 `.trae/skills/` 目录,Trae 会自动识别。然后:
+
+- 在 Trae 对话里说 **"用 DoctorWhy 帮我问清楚这个需求"**,或直接抛一个模糊的医疗需求自动触发。
+- 也可以手动调用 skill(见 Trae 的 skill 面板)。
+
+**读即用(备选)**:对话里粘贴 `SKILL.md` 全文,或说"按 DoctorWhy 的方式追问我的需求"。
 
 ### Cursor
 
@@ -259,6 +267,7 @@ DoctorWhy/
 ├── .claude-plugin/       Claude Code 插件(plugin.json / marketplace.json)
 ├── .codex-plugin/        Codex 插件(plugin.json)
 ├── .cursor/rules/        Cursor rules(doctorwhy.mdc)
+├── .trae/skills/         Trae skill(DoctorWhy/SKILL.md)
 ├── gemini-extension.json Gemini CLI 扩展
 ├── AGENTS.md             Gemini/多工具常驻上下文
 ├── skills/               Codex skill 载体(doctorwhy/SKILL.md + references)
