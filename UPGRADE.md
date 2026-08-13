@@ -1,0 +1,40 @@
+# DoctorWhy v4.0 升级说明
+
+> 基于 `docs/doctorwhy-evaluation.md` 测评整改。本次升级统一了仓库内两个分叉的 SKILL.md，修复规则库加载、索引与自评评测等问题。
+
+## 升级内容（v3.0.0 → v4.0.0）
+
+### P0 · 分发与工程化修复
+1. **统一双版本**：根目录 `SKILL.md` 与 `skills/doctorwhy/SKILL.md` 统一为同一 v4.0.0 内容，消除之前"两套流程、互相打架"的维护分叉。
+2. **规则库索引补全**：修正之前打包版漏掉 `rules-specimen.md` 的索引 bug，现为完整 9 库；修正"90 条 vs 80 条"数字歧义，统一为"9 类约 90 条"。
+3. **强制加载规则库**：SKILL.md 明确"进入 Phase 3 必须读取对应 `references/rules-*.md`"，禁止仅凭内嵌摘要判断合规，避免 81 条规则成为死代码。
+4. **description 触发词 + allowed-tools**：description 增加医疗/影像/检验/器械/LIS 等触发关键词；`allowed-tools` 给出 `Read, Grep, WebSearch, Glob`，提升自动触发率与读规则库能力。
+5. **本地补装 references/**：完整 9 个规则库文件已装入 `.trae/skills/DoctorWhy/references/`，本地不再是"只有 9 条内嵌规则"的空壳。
+
+### P1 · 提问体验与聚焦
+6. **封闭式选项提问**：新增"封闭式选项优先"规范（2-3 互斥选项 + 逃生门），对齐 feature:interviewer 的提问方式，降低用户认知负担。
+7. **砍 UI/登录越界**：设备 UI 维度收敛为"仅医疗特有约束"（高对比/隔距读屏/色盲警示/防误触/克制文案），明确消费级 UI 设计不在本 skill 范围，聚焦影像/检验/器械/LIS 护城河品类。
+
+### P1 · 可信评测
+8. **重建 evaluation/cases.md**：
+   - 声明并废止"全部 15/15 自评满分"的偏差；
+   - 每用例增加**无 SKILL 基线对照**与**独立评分人盲评**要求；
+   - 新增 **C6 红线回归用例**（"AI 直接出报告不复核"必须拒绝），把安全承诺纳入回归；
+   - 尚未独立复核的分数一律标 `待复核`，禁止填满分。
+
+### P2 · 边界声明
+9. 新增 `docs/doctorwhy-evaluation.md` 测评报告，明示"提示词级红线 ≠ 合规保障"的能力边界。
+
+## 变更文件
+
+| 文件 | 变更 |
+|---|---|
+| `SKILL.md` | v3.0.0 → v4.0.0（统一，含全部 P0/P1 修复） |
+| `skills/doctorwhy/SKILL.md` | v3.0.0 → v4.0.0（与根目录一致） |
+| `evaluation/cases.md` | 重建：基线对照 + C6 红线回归 + 待复核标记 |
+| `docs/doctorwhy-evaluation.md` | 新增：严格模式测评报告 |
+| `.trae/skills/DoctorWhy/references/` | 本地补装 9 个规则库（GitHub 侧 `references/` 内容不变） |
+
+## 未做（留给后续）
+- 多模型验证（Claude/GLM/豆包）与发布 CI。
+- `eval_score.py` 的 CI 对接（等独立评分数据后做）。
