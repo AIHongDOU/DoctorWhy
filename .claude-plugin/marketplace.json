@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "DoctorWhy",
+  "name": "doctorwhy",
   "description": "医疗需求追问器:说不清的医疗需求,它问清楚再动手。",
   "owner": {
     "name": "AIHongDOU",
