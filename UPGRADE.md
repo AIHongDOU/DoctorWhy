@@ -92,3 +92,36 @@
 | `AGENTS.md` | 输出 schema + 收敛措辞同步 |
 | `.cursor/rules/doctorwhy.mdc` | 输出 schema + Phase 4 措辞同步 |
 | `README.md` | 定位/教学模式/落地模式/流程图措辞同步 |
+
+---
+
+## v5.0 · 品类框架扩展 + 规则库扩容（v4.1.0 → v5.0.0）
+
+> 按 v5.0 升级方向落地：新增 3 个品类框架与 3 个规则库，规则从 9 类 91 条扩容至 12 类 151 条；同时纠正此前"97 条"虚报（实际 91 条）。
+
+### 新增品类框架（SKILL.md 提问框架 + 各自追问维度）
+| 品类 | 覆盖 | 对应规则库 |
+|---|---|---|
+| **病理学（切片/数字病理）** | 制片链路/切片质量/对照/判读复核/切缘/WSI/追溯 | `rules-pathology.md` |
+| **AI 辅助诊断（模型/验证/监管）** | 用途定位/临床评价/人机协同/可解释/版本治理/漂移监控/失败安全 | `rules-ai-diagnosis.md` |
+| **ICU 实时监测（重症/监护/报警）** | 采样率/伪差/报警分级/疲劳管理/趋势变化率/失效安全/审计 | `rules-icu-monitoring.md` |
+
+### 新增规则库（各 20 条，格式与现有 9 库一致：规则+为什么+踩坑+标准来源+点破矛盾）
+- `references/rules-pathology.md`（制片厚度/固定/染色对照/切缘/双重阅片/WSI 层级/色彩校准/AP-LIS 闭环等 20 条）
+- `references/rules-ai-diagnosis.md`（辅助 vs 自动诊断监管/防泄漏/代表性/人机协同/可解释/版本治理/PMS/确定性/输入质控/OOD/亚组/审计等 20 条）
+- `references/rules-icu-monitoring.md`（采样率/阈值个性化/报警疲劳/分级/伪差/变化率报警/失效安全/可追溯/EMR 转录/设备联动等 20 条）
+
+### 修正与同步
+- **条数实报**：纠正 README/SKILL.md 虚报"97 条"→ 实报 9 类 **91 条**；扩容后 12 类 **151 条**。
+- 触发词增加：`ICU / 重症 / 监护 / 报警`；description 提到病理/AI诊断/ICU 隐含矛盾。
+- 延迟加载示例新增 3 条品类→规则库映射。
+- README 目录树、品类表、Roadmap 同步；AGENTS/.mdc 用通配 `rules-*.md` 自动覆盖新库，无需改。
+
+### 变更文件
+| 文件 | 变更 |
+|---|---|
+| `references/rules-pathology.md` | 新增（20 条） |
+| `references/rules-ai-diagnosis.md` | 新增（20 条） |
+| `references/rules-icu-monitoring.md` | 新增（20 条） |
+| `SKILL.md` | v4.1.0 → v5.0.0（3 品类框架/索引 12 类 151 条/触发词/changelog） |
+| `README.md` | 品类表/目录树/条数/Roadmap 同步 |
