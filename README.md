@@ -248,7 +248,6 @@ DoctorWhy/
 │   ├── rules-imaging.md     暗规则库·影像 pipeline(核心资产)
 │   ├── rules-clinical-validation.md 暗规则库·临床验证(核心资产)
 │   ├── rules-specimen.md    暗规则库·标本前处理与样本变量(核心资产)
-│   └── question-bank.csv   实弹问题示例(可选)
 └── examples/
     ├── 登录界面_新版.html  UI 输出示例(浏览器打开)
     └── stitch_demo.py     逻辑输出示例(python 自检)
